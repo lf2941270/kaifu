@@ -1,0 +1,61 @@
+/*模板*/
+define(function(require,exports,module){
+  module.exports={
+    title:"kedou",
+		status:0,//0表示等待队列中，1表示登陆中，2表示处理中，3表示处理完毕
+    page:{
+      "status":0,//0表示需要登陆，1表示已有cookie无需登陆或者网站本身不需要登录
+      "login":"http://kf.kedou.com/kf/login/toLogin.htm",
+      "publish":"http://kf.kedou.com/kf/pageGame/publishServer.htm"
+    },
+    "user":{
+      "default":false,
+      "username":"baiyu0001",
+      "password":"baiyu0001"
+    },
+    "loginForm":{
+      "needVerifyCode":false,
+      "selector":".login_box form",//登录表单的jquery选择器
+      "content":[
+        {
+          "name":"username",
+          "value":"值"
+        },{
+          "name":"password",
+          "value":"值"
+        }
+      ],
+      "submit":{//登录表单的提交方式
+        "selector":".login_btn input",
+        "trigger":"click"
+      }
+    },
+    "publishForm":{
+      "content":[
+        {
+          "name":"gameOpenInfo.gameName",
+          "replace":"game",
+          "value":"经过格式化函数处理后的值"
+        },{
+          "name":"openTime",
+          "format":7
+        },{
+          "name":"openHours",
+          "format":8
+        },{
+          "name":"gameOpenInfo.serverName",
+          "format":6,
+          "value":"经过格式化函数处理后的值"
+        },{
+          "name":"gameOpenInfo.loginUrl",
+          "replace":"main_url",
+          "value":"经过格式化函数处理后的值"
+        }
+      ],
+      "submit":{
+        "selector":"#subMitPublish",
+        "trigger":"click"
+      }
+    }
+  }
+});

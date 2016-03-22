@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>测试</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8;">
+  <style>
+   html{
+     background: url("../../images/Bg_login.jpg") no-repeat #FFFFFF;
+   }
+    body{
+      width: 300px;
+      padding: 15px;
+      font-size:12px;
+      font-family: "微软雅黑";
+      color: #444444;
+    }
+   .clearfix:after{
+     content:'.';
+     height:0;
+     visibility:hidden;
+     display:block;
+     clear:both;
+   }
+    body .test{
+      overflow-y: visible;
+    }
+    body h2{
+      text-align: center;
+    }
+    .step{
+      display: none;
+    }
+    .step.active{
+      display: block;
+    }
+    .step .process{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #cdcdcd;
+      box-shadow: 1px 1px 11px -5px #000;
+      border-radius: 4px;
+    }
+    .step .process li{
+      cursor:pointer;
+      padding: 0px;
+    }
+   .step .process li:nth-child(even){
+     background: #e1edf5;
+   }
+   .step .process li:hover{
+     background: #63B0E6;
+     color:#ffffff
+   }
+   .step .process li span{
+     padding: 4px 0;
+     display: inline-block;
+     text-align: center;
+   }
+   .step .process li .num{
+     width: 20px;
+     border-right: 1px dotted #888888;
+   }
+   .step .process li .title{
+     width: 110px;
+     border-right: 1px dotted #888888;
+   }
+   .step .process li .status{
+     width: 160px;
+   }
+
+   .step-1 form{
+     border:1px dashed #ddd;
+   }
+   .step-1 p.clearfix{
+     margin: 0;
+     padding: 8px;
+   }
+   .step-1 p.clearfix>label{
+     display: block;float: left;
+     line-height:22px;
+   }
+   .step-1 p.clearfix:nth-child(odd){
+     background: #f2f2f2;
+   }
+   .progressBar{
+     margin: 10px 0;
+   }
+   .progressBar .pro-title{
+     float: left;
+   }
+    .progressBar .outside{
+      margin: 4px;
+      padding: 1px;
+      float: left;
+      width: 170px;
+      height: 6px;
+      border: 1px solid #61a8e4;
+      position: relative;
+      border-radius: 4px;
+      box-shadow: 1px 1px 6px -4px #000;
+
+    }
+   .progressBar .inside{
+     position: absolute;
+     height: 6px;
+     border-radius: 3px;
+     background: #63B0E6;
+     left: 1px;
+     top: 1px;
+   }
+  </style>
+</head>
+<body>
+<h2>我是萌萌哒扩展~ V0.0.1</h2>
+<input type="button" value="清除数据" id="clear"/>
+<div id="main" ng-controller="controllerMain">
+  <div class="step step-0">
+    <h3>填写账号密码</h3>
+    <p>
+      <label for="username">账号：</label>
+      <input type="text" id="username" name="username"/>
+    </p>
+    <p>
+      <label for="password">密码：</label>
+      <input type="password" id="password" name="password"/>
+    </p>
+    <p>
+      <input type="button" value="确认" name="submit"/>
+    </p>
+  </div>
+  <div class="step step-1">
+    <h3>填写要发布的开服表信息</h3>
+    <form>
+      <p class="clearfix">
+        <label for="game">游戏名称：</label>
+        <input type="text" id="game" name="game" placeholder="填写游戏名称"/>
+      </p>
+      <p class="clearfix">
+        <label>游戏类型:</label>
+      <span>
+        <input checked=checked"" type="radio" name="leixing" value="角色扮演" id="leixing1"><label for="leixing1">角色扮演</label>
+        <input type="radio" name="leixing" value="战争策略" id="leixing2"><label for="leixing2">战争策略</label>
+        <input type="radio" name="leixing" value="休闲竞技" id="leixing3"><label for="leixing3">休闲竞技</label>
+        <input type="radio" name="leixing" value="模拟经营" id="leixing4"><label for="leixing4">模拟经营</label>
+        <input type="radio" name="leixing" value="社区养成" id="leixing5"><label for="leixing5">社区养成</label>
+      </span>
+      </p>
+      <p class="clearfix">
+        <label for="time">开服时间：</label>
+        <input type="datetime" id="time" name="time" placeholder="格式：2014-11-1 15:30"/>
+      </p>
+      <p class="clearfix">
+        <label for="server">服务器数：</label>
+        <input type="number" id="server" name="server" placeholder="填写数字即可"/>
+      </p>
+      <p class="clearfix">
+        <label for="main_url">注册地址：</label>
+        <input type="text" id="main_url" name="main_url" placeholder="填写推广链接"/>
+      </p>
+      <p class="clearfix">
+        <label for="site_url">官网地址：</label>
+        <input type="text" id="site_url" name="site_url" placeholder="填写游戏官网地址"/>
+      </p>
+      <p class="clearfix">
+        <label for="company">运营商：</label>
+        <input type="text" id="company" name="company" value="爱百娱"/>
+      </p>
+      <p class="clearfix">
+        <label for="info">开服介绍：</label>
+        <input id="info" name="info" value="新区开放礼包多多"/>
+      </p>
+      <p class="clearfix">
+        <label for="qq">客服QQ：</label>
+        <input id="qq" name="qq" value="4008378088"/>
+      </p>
+    </form>
+    <p>
+      <input type="button" value="开始自动发布" name="publish"/>
+    </p>
+
+  </div>
+  <div class="step step-2">
+    <div class="progressBar clearfix">
+      <div class="pro-title">发布进度：</div>
+      <div class="outside">
+        <div class="inside"></div>
+      </div>
+      <div class="info">
+        <span class="sucNum"></span>/<span class="num"></span>
+      </div>
+    </div>
+    <ul class="process">
+
+    </ul>
+
+  </div>
+</div>
+<script src="../lib/sea.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
